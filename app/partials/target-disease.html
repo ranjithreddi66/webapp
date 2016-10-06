@@ -399,20 +399,33 @@
 									<div class="col-md-6" style="height:550px">
 										<div class="row">
 											<div class="col-md-12" style="text-align:center">
-												<div>{{displayAbstracts.length}} {{displayAbstracts.length == 1 ? 'Abstract' : 'Abstracts'}} - {{cluster}}</div>
+												<div><h4>{{displayAbstracts.length == 1 ? 'Abstract' : 'Abstracts'}} - {{cluster}} ({{displayAbstracts.length}})</h4></div>
+												<hr>
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-md-12">
-											<rzslider 
-												rz-slider-model="slider.min"
-												rz-slider-high="slider.max"
-												rz-slider-options="slider.options"></rzslider>
+											<div class="col-md-12" style="border-right: 1px solid #eee">
+												<rzslider 
+													rz-slider-model="slider.min"
+													rz-slider-high="slider.max"
+													rz-slider-options="slider.options"></rzslider>
 											</div>
+											<!--
+											<div class="col-md-3" style="padding-top:15px">
+												<select class="form-control">
+													<option>Diseases</option>
+												</select>
+											</div>
+											<div class="col-md-3" style="padding-top:15px">
+												<select class="form-control">
+													<option>Journals</option>
+												</select>
+											</div>
+  											-->
 										</div>
 										<hr>
 										<div class="row">
-											<div class="col-md-12" style="height: 430px; overflow-y: scroll">
+											<div class="col-md-12" style="height: 380px; overflow-y: scroll">
 												<div class="row" ng-repeat="item in displayAbstracts">
 													<div class="col-md-12"><h5><a ng-href="{{item.evidence.literature_ref.lit_id}}" target="_blank">{{item.literature.title}}</a></h5><p>{{item.literature.abstract | limitTo: 200}}{{item.literature.abstract.length > 200 ? '...' : ''}}</p><hr></div>
 												</div>
@@ -441,7 +454,30 @@
 							<p class=cttv-section-intro>Shown are the top {{search.tables.literature.data.length}} articles where <span class="highlight-primary text-content-highlight">target</span> and <span class="highlight-warning text-content-highlight">disease</span> are found in the same sentence.  </p>
 
 
-                            <p ng-show="search.tables.literature.total>search.tables.literature.maxShow">{{search.tables.literature.total}} records found. Showing the most relevant {{search.tables.literature.data.length}}</p>
+							<div class="row">
+								<div class="col-md-4">
+                            		<p ng-show="search.tables.literature.total>search.tables.literature.maxShow">{{search.tables.literature.total}} records found. Showing the most relevant {{search.tables.literature.data.length}}</p>
+								</div>
+								<div class="col-md-8" style="border-right: 1px solid #eee">
+									<rzslider 
+										rz-slider-model="slider.min"
+										rz-slider-high="slider.max"
+										rz-slider-options="slider.options"></rzslider>
+								</div>
+								<!--
+								<div class="col-md-3" style="padding-top:15px">
+									<select class="form-control">
+										<option>Diseases</option>
+									</select>
+								</div>
+								<div class="col-md-3" style="padding-top:15px">
+									<select class="form-control">
+										<option>Journals</option>
+									</select>
+								</div>
+								  -->
+							
+							</div>
 
                             <div class="table-panel">
                                 <table class='table cttv-evidence-table' id="literature-table">

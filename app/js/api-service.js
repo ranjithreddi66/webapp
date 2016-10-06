@@ -52,7 +52,7 @@ angular.module('cttvServices')
 
         var api = cttvApi()
             .prefix("/api/")
-            .version("1.2")
+            .version("latest")
             // .prefix("https://www.targetvalidation.org/api/")
             .appname("cttv-web-app")
             .secret("2J23T20O31UyepRj7754pEA2osMOYfFK")
@@ -376,7 +376,7 @@ angular.module('cttvServices')
             $log.log("cttvAPI.getCluster " + queryObject.target_id + ", " + queryObject.code);
             
             // TODO: temporary solution to access real data, remove this when API is available
-            var	url = 'http://10.8.223.246:8008/api/latest/public/evidence/filter?disease=EFO_0003767&target=ENSG00000073756&datasource=europepmc&facets=True';
+            var	url = 'http://localhost:8000/api/latest/public/evidence/filter?disease=EFO_0000311&target=ENSG00000066468&datasource=europepmc&facets=True';
             
             var responsePromise = $http.get(url, null);
             var deferred = $q.defer();
@@ -389,11 +389,12 @@ angular.module('cttvServices')
             });
 
             return deferred.promise;
+            
 
+/*
             // TODO: Change this to the cluster url
-            /*
             return callAPI({
-                operation: cttvAPI.API_ASSOCIATION_URL,
+                operation: cttvAPI.API_EVIDENCE_URL,
                 params: queryObject
             });
             */
@@ -408,7 +409,7 @@ angular.module('cttvServices')
             $log.log("cttvAPI.getCluster " + queryObject.term);
             
             // TODO: temporary solution to access real data, remove this when API is available
-            var	url = 'http://10.8.223.246:8008/api/latest/public/evidence/filter?disease=EFO_0003767&target=ENSG00000073756&datasource=europepmc&facets=True&abstract=' + queryObject.abstract;
+            var	url = 'http://localhost:8000/api/latest/public/evidence/filter?disease=EFO_0000311&target=ENSG00000066468&datasource=europepmc&facets=True&abstract=' + queryObject.abstract;
             
             var responsePromise = $http.get(url, null);
             var deferred = $q.defer();

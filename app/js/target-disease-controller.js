@@ -1912,7 +1912,10 @@
                 } ).
                 then(
                     function(resp) {
+                    	$scope.displayAbstracts = [];
                     	$scope.allData = resp.data;
+                    	
+                    	console.log("all data: ", $scope.allData);
                     	filterAbstracts($scope.slider.min, $scope.slider.max);
                     },
                     cttvAPIservice.defaultErrorHandler
@@ -1934,10 +1937,13 @@
         		var term = data.facets.abstract.buckets[i];
         		
         		for(var j=0; j< term.cluster_terms.buckets.length; j++) {
-        			cluster.push({"label": term.cluster_terms.buckets[j].key});
+        			
+        			if(term.cluster_terms.buckets[j].key != term.key) {
+        				cluster.push({"label": term.cluster_terms.buckets[j].key, "weight": term.cluster_terms.buckets[j].score});
+        			}
         		}
         		
-        		groups.push({"label": term.key, "groups": cluster});
+        		groups.push({"label": term.key, "groups": cluster, "weight": term.doc_count});
         	}
 
         	return groups;
@@ -1973,6 +1979,8 @@
         
 
         var initTableLiterature = function(){
+        	
+        	console.log("table data: ", formatLiteratureDataToArray($scope.search.tables.literature.data));
             return $('#literature-table').DataTable( cttvUtils.setTableToolsParamsExportColumns({
                 "data": formatLiteratureDataToArray($scope.search.tables.literature.data),
                 "autoWidth": false,

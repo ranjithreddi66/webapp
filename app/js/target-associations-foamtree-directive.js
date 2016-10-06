@@ -46,7 +46,9 @@
 						dataObject: {
 							groups: scope.clusterData
 						},
-						onGroupClick: scope.onCellSelect
+						onGroupClick: scope.onCellSelect,
+						stacking: "flattened",
+						layout: "squarified"
 					});
 				});
         	}
