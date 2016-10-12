@@ -1915,7 +1915,6 @@
                     	$scope.displayAbstracts = [];
                     	$scope.allData = resp.data;
                     	
-                    	console.log("all data: ", $scope.allData);
                     	filterAbstracts($scope.slider.min, $scope.slider.max);
                     },
                     cttvAPIservice.defaultErrorHandler

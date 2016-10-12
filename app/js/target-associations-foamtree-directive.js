@@ -18,13 +18,17 @@
             tab: '=?' // use this if the directive is in a tab
         },
 
-        template: '<div id="foamtree" style="width: {{width}}px; height: {{height}}px"></div>',
+        template: '<style type="text/css">' +
+                  '.exposed-breadcrumb { position:absolute; font-size:16px;  top: 0px; background-color: rgba(74, 94, 116, 0.64); padding: 4px 0px 4px 10px; z-index: 1; color: #fff; height:30px; border-radius: 2px;}' +
+        	      '</style>' +
+        	      '<div id="foamtree" style="width: {{width}}px; height: {{height}}px"></div>' + 
+        	      '<div class="cttv-facets-controls exposed-breadcrumb" ng-if="breadcrumb">{{term}}  <span class="text-align:right" ng-click="closeBreadcrumb()"><i class="fa fa-times"></i></span></div> ',
 
         link: function (scope, element, attribute) {
         	
         	var foamtree = {};
 
-        	scope.width = angular.isDefined(scope.width) ? scope.width :  500; // set the default width
+        	scope.width = angular.isDefined(scope.width) ? scope.width : 500; // set the default width
         	
         	scope.height = angular.isDefined(scope.height) ? scope.height : 500; // set the default height
 			
@@ -36,6 +40,12 @@
         	
         	if(!angular.isDefined(scope.tab)) {
         		drawFoamTree();
+        	}
+        	
+        	scope.closeBreadcrumb = function() {
+        		foamtree.expose(null);
+        		scope.breadcrumb = false;
+        		foamtree.redraw();
         	}
         	
         	function drawFoamTree() {
@@ -61,11 +71,12 @@
 						groupBorderWidth : 0,
 						groupBorderRadius : 0,
 						relaxationInitializer : 'ordered',
+						onGroupDoubleClick: function(args) {
+							scope.term = args.group.label;
+							scope.breadcrumb = true;
+						},
 						/*
 						onGroupSelectionChanged: function(args) { selectGroup(args.groups[0]) },
-						onGroupDoubleClick: function(args) {
-							var g = args.group;
-						},
 						onGroupExposureChanged: function(e) {
 							var g = e.groups[0];
 							if (g) {
