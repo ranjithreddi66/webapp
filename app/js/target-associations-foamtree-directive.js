@@ -74,40 +74,7 @@
 						onGroupDoubleClick: function(args) {
 							scope.term = args.group.label;
 							scope.breadcrumb = true;
-						},
-						/*
-						onGroupSelectionChanged: function(args) { selectGroup(args.groups[0]) },
-						onGroupExposureChanged: function(e) {
-							var g = e.groups[0];
-							if (g) {
-								exposed = g;
-								validateExposed(true)
-							} else {
-								validateExposed(false)
-							}
-				        },
-						groupColorDecorator: function (opts, params, vars) {
-							var g = params.group;
-							if ($('#chk-rainbow').prop('checked'))
-								return;
-							//console.log(g, vars.groupColor)
-							if (g.parent.top) {
-								var d =  Math.round(g.weight * 120/(g.parent.maxweight-g.parent.minweight)); 
-								vars.groupColor.h = 240 + d;
-								g.bcolor = 240 + d;
-							}  else {
-								vars.groupColor.h = g.bcolor;
-								var d =  100 - Math.round(g.weight * 50/(g.parent.maxweight-g.parent.minweight));
-								vars.groupColor.l = d;
-							}
-							if (g.hovered) {
-								vars.groupColor = '#98C7FD' ;
-							}
-						}, onGroupHover : function(args) {
-							//hoverNode(args.group)
-						},
-						*/
-						
+						}
 					});
 				});
         	}

@@ -49,7 +49,6 @@ angular.module('cttvServices')
             },
         };
 
-
         var api = cttvApi()
             .prefix("/api/")
             .version("latest")
@@ -367,69 +366,38 @@ angular.module('cttvServices')
         };
 
         /**
-        * Get cluster details via API gene() method based on ENSG code and EFO id
+        * Get cluster details via API method based on ENSG code and EFO id
         * queryObject params:
-        *  - target_id: the ENSG code, e.g. "ENSG00000005339"
-        *  - code: the (EFO) code
+        *  - target: the ENSG code, e.g. "ENSG00000005339"
+        *  - disease: the (EFO) code
+        *  - datasource: europepmc
+        *  - facets: True
         */
         cttvAPI.getCluster = function(queryObject){
-            $log.log("cttvAPI.getCluster " + queryObject.target_id + ", " + queryObject.code);
-            
-            // TODO: temporary solution to access real data, remove this when API is available
-            var	url = 'http://localhost:8000/api/latest/public/evidence/filter?disease=EFO_0000311&target=ENSG00000066468&datasource=europepmc&facets=True';
-            
-            var responsePromise = $http.get(url, null);
-            var deferred = $q.defer();
-            responsePromise.success(function(data) {
+            $log.log("cttvAPI.getCluster " + queryObject.target + " " + queryObject.disease);
 
-              deferred.resolve(data);
-            });
-            responsePromise.error(function(status) {
-              deferred.reject(status);
-            });
-
-            return deferred.promise;
-            
-
-/*
-            // TODO: Change this to the cluster url
             return callAPI({
-                operation: cttvAPI.API_EVIDENCE_URL,
+                operation: cttvAPI.API_FILTERBY_URL,
                 params: queryObject
             });
-            */
         };
 
         /**
         * Get abstract details for a particular cluster term 
         * queryObject params:
-        *  - term: the cluster term, e.g. "patient"
+        *  - target: the code, e.g ENSG00000066468 
+        *  - disease: the code, e.g EFO_0000311
+        *  - datasource: europepmc
+        *  - facets: True
+        *  - abstract: cancer
         */
         cttvAPI.getAbstract = function(queryObject){
-            $log.log("cttvAPI.getCluster " + queryObject.term);
-            
-            // TODO: temporary solution to access real data, remove this when API is available
-            var	url = 'http://localhost:8000/api/latest/public/evidence/filter?disease=EFO_0000311&target=ENSG00000066468&datasource=europepmc&facets=True&abstract=' + queryObject.abstract;
-            
-            var responsePromise = $http.get(url, null);
-            var deferred = $q.defer();
-            responsePromise.success(function(data) {
+            $log.log("cttvAPI.getAbstract: " + queryObject.abstract);
 
-              deferred.resolve(data);
-            });
-            responsePromise.error(function(status) {
-              deferred.reject(status);
-            });
-
-            return deferred.promise;
-
-            // TODO: Change this to the abstract url
-            /*
             return callAPI({
-                operation: cttvAPI.API_ASSOCIATION_URL,
+                operation: cttvAPI.API_FILTERBY_URL,
                 params: queryObject
             });
-            */
         };
 
 
