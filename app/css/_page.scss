@@ -409,15 +409,20 @@ body{
     //box-shadow: 0 0 5px 0 $clr-ui-shadow;
     //background: $clr-ui-background;
 
-    h4 {
+    font-weight: 300;
+    /*h4 {
         font-weight: 300;
     }
 
     h3 {
         @extend h4;
         margin-bottom: 0px;
-    }
+    }*/
 
+}
+
+.cttv-content-header-nospace{
+    margin-bottom: 0px;
 }
 
 

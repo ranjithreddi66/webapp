@@ -1724,3 +1724,34 @@ angular.module('cttvDirectives', [])
     }])
 
 
+
+    /**
+     * Directive for the footer
+     * This is mostly so the footer loads like the other page content and not before it.
+     */
+    .directive('mdParser', ['$log','$http', '$sce', function ($log, $http, $sce) {
+        'use strict';
+
+        return {
+            restrict: 'EA',
+            scope: {
+                url: '@'     // the url of the resource
+            },
+            template : '<div ng-bind-html="md"></div>',
+            link: function(scope, element, attrs) {
+                $http.get(scope.url)
+                .then(function successCallback(response) {
+                    // this callback will be called asynchronously
+                    // when the response is available
+                    $log.log(scope.url);
+                    $log.log(response);
+                    scope.md = $sce.trustAsHtml( marked(response.data) );
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    $log.log(response)
+                });
+            }
+        };
+    }])
+

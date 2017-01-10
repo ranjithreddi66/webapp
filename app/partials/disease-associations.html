@@ -1,41 +1,33 @@
-<div class="partial-page">
+
     <cttv-page-progress-spinner></cttv-page-progress-spinner>
 
     <div ng-show="search.total==0">
-        <div class="container">
-            <h3 view-title>No targets found for {{search.query}}</h3>
-            Try searching a different target or disease above
-        </div>
+        <h3 view-title class="cttv-content-header">No targets found for {{search.query}}</h3>
+        Try searching a different target or disease above
     </div>
 
     <div ng-if="search.total>0">
+        <h3 view-title class="cttv-content-header cttv-content-header-nospace">{{search.total}} {{search.total===1 ? "target" : "targets"}} associated with {{search.label}}</h3>
+        <p><a href="/disease/{{search.query}}"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-align-justify fa-stack-1x fa-inverse"></i></span> View disease profile</span></a>
+        </p>
 
-        <div class="cttv-content-header">
-            <div class="container">
-                <h3 view-title>{{search.total}} {{search.total===1 ? "target" : "targets"}} associated with {{search.label}}</h3>
-                <p><!-- Found {{search.total}} {{search.total===1 ? "target" : "targets"}}<span class="cttv-interpage-link">--><a href="/disease/{{search.query}}"><span class="fa-stack"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-align-justify fa-stack-1x fa-inverse"></i></span> View disease profile</span></a>
-                </p>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <cttv-facets></cttv-facets>
+                <cttv-filter-by-file-targets disease-name="search.label" target="target.targetArray"
+                                             filters="filters" getfacets="getFacets" search="search">
+
+                </cttv-filter-by-file-targets>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row" ng-if="search.total>0">
-                <div class="col-sm-3">
-                    <cttv-facets></cttv-facets>
-                    <cttv-filter-by-file-targets disease-name="search.label" target="target.targetArray"
-                                                 filters="filters" getfacets="getFacets" search="search">
-
-                    </cttv-filter-by-file-targets>
-                </div>
-
-                <div class="col-sm-9">
-                    <cttv-disease-associations disease="search.query" target="target.targetArray"
-                                               filename="search.filename"
-                                               filters="filters" state-id="dat">
-                    </cttv-disease-associations>
-                </div>
+            <div class="col-sm-9">
+                <cttv-disease-associations disease="search.query" target="target.targetArray"
+                                           filename="search.filename"
+                                           filters="filters" state-id="dat">
+                </cttv-disease-associations>
             </div>
         </div>
     </div>
-</div>
+
 <!-- end search results-->

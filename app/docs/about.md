@@ -1,232 +1,144 @@
-## About the CTTV Target Validation Platform
+The Open Targets Platform is a comprehensive and robust data integration for access to and visualisation of potential drug targets associated with disease. It brings together multiple data types and aims to assist users to identify and prioritise targets for further investigation.
 
-The Center for Therapeutic Target Validation (CTTV) platform brings together evidence which associates potential
-drug targets with diseases. Its aim is to help users identify and prioritise potential targets for further investigation.
+A drug target can be a protein, protein complex or RNA molecule and it’s displayed by its gene name from the Human Gene Nomenclature Committee, [HGNC](http://www.genenames.org/). We integrate all the evidence to the target using [Ensembl stable IDs](http://www.ensembl.org/info/genome/stable_ids/index.html) and describe relationships between diseases by mapping them to [Experimental Factor Ontology](http://www.ebi.ac.uk/efo/) (EFO) terms.
 
-The platform brings together evidence from multiple data types that can be relevant to target identification and prioritisation.
-These data are described in detail on the [data sources](/data_sources) page.
+The Platform supports workflows starting from a target or disease, and shows the available evidence for target – disease associations. Target and Disease profile pages showing specific information for both target (e.g baseline expression) and disease (e.g. Disease Classification) are also available.
 
-A target can be a protein, protein complex or RNA molecule. We integrate evidence through the gene that codes for
-the target using [Ensembl gene identifiers](http://www.ensembl.org/info/genome/genebuild/genome_annotation.html). We display the
-target by the [HGNC gene symbol](http://www.genenames.org) but you can search for it using protein or gene names
-and most synonyms as explained in [What can I search for](/faq#what_can_I search_for).
 
-We map diseases to terms in the [Experimental Factor Ontology](http://www.ebi.ac.uk/efo/) (EFO), which enables us to
-describe relationships between diseases. For more details see [How are diseases described?](/faq#diseases)
 
-  * [Getting Started](#getting_started)
-  * [Target Association page](#target_assoc)
-  * [Disease Association page](#disease_assoc)
-  * [Target-Disease Evidence page](#evidence)
-  * [Target Profile Page](#target_profile)
-  * [Disease Profile page](#disease_profile)
-  * [Association Score](#scoring)
-  * [Filters](#filters)
-  * [Citation](#citation)
-  * [Support and Further Information](#support)
 
-### <a name="getting_started"></a>Getting Started
 
-The platform supports workflows starting from either a target or disease and presents the evidence for target – disease
-associations in a number of ways through Association and Evidence pages. We also present related information on the target
-or the disease itself through the [Target Profile](#target_profile) and [Disease Profile](#disease_profile) pages.
+#### Getting started with a text search
 
-A search box is available on the home page or at the top of every other page. To find a target of interest, either enter
-the gene or protein name, symbol or synonym. To find a disease you can search for the common disease name or its synonyms
-(including some abbreviations) provided the disease label and its synonyms are part of the [EFO](http://www.ebi.ac.uk/efo/).
+The search box is available on the [Open Targets Platform](https://www.targetvalidation.org/) homepage and at the top of every other page.
 
-A getting started slide pack is available [here](http://about.targetvalidation.org/sites/targetvalidation.org/files/documents/cttv_platform_getting_started.pdf)
+You can search for a disease name, a gene name (or official symbol) or a protein name (or symbol). You can also search for synonyms and abbreviations for both genes (e.g. p53) and diseases (AD for Alzheimers disease), provided these alternative names are listed in the original sources from which we get this data from, e.g. HGNC (for genes) and Experimental Factor Ontology (for diseases and phenotypes).
 
-### <a name="target_assoc"></a>Target Association page
 
-After searching for a target and selecting the target you will be taken to the Target Association page which provides an
-overview of all diseases associated to a target.
 
-Three views of the associations are available organised by the tabs at the top:
-  * Bubbles view,
-  * Table view and
-  * Tree view.
 
-Filters are available on the left of the page to restrict the associations that are displayed by data type or to focus
-on a therapeutic area (see [filters](#filters)).
 
-#### Bubbles View
+#### Diseases associated with a target
 
-This view groups diseases into 'bubbles' by therapeutic area. Each large bubble corresponds to a therapeutic area and
-consists of smaller bubbles representing diseases within this area. A disease can belong to several therapeutic areas
-and therefore can appear within more than one therapeutic area bubble.
+When you search for a target, you will get an overview of all potential diseases associated with it. You can filter the results of associations by Data types (e.g. Genetic associations, Somatic mutations) and Therapeutic area (e.g. Genetic disorder, Skin disease).
 
-The strength of the association between the target and a particular disease is represented by the size of the corresponding
-disease bubble and the depth of its blue colour: The larger the bubble and the deeper the colour, the stronger the association.
+The associations are provided in three different views, Bubbles, Table and Tree, which are organised by tabs:
 
-Mouse over a bubble to display the full name of the disease and the score associating it with the target. Clicking on a
-bubble opens a pop-up with several links: Click on the flower icon or to ‘View evidence details’ to view the detailed
-[Target-Disease Evidence](#evidence) page for the association, click on 'Profile’ to view the Disease Profile page
-or ‘Associations’ to view all the target associations of that disease.
+##### Bubbles View
 
-To zoom in on a particular therapeutic area, click on the corresponding therapeutic area filter on the left hand side.
-To zoom out of a particular therapeutic area, click on the therapeutic area filter again. You can also filter the bubbles
-by data types using the corresponding filter on the left hand side.
+In this view, we group diseases into 'bubbles' based on the disease ontology. Large bubbles correspond to a therapeutic area and consist of smaller bubbles representing diseases within this area. A disease can belong to several therapeutic areas and therefore can appear within more than one large bubble.
 
-#### Table View
+The strength of the association between the target and a disease is represented by the size of the bubble and the shade of its blue colour; the larger the bubble and the darker the blue, the stronger the association.
 
-This view lists all diseases associated to a particular gene ordered by the association score. Scores are represented by the depth
-of blue colour. Cells representing associations with no evidence are coloured white. In this view we show evidence from the
-lower parts of the disease hierarchy aggregated into higher terms. So for instance in the [BRAF Target Association](/target/ENSG00000157764/associations)
-page, evidence is shown for higher level terms such as skin disease, or carcinoma.
+##### Table View
 
-The filters work as before on this view and in addition the associations can be ordered by the association scores for individual data
-types by clicking the arrow in the table header. To order by several data types, shift-click the table headers. There is also a search box
-available and typing into the box will restrict the diseases displayed to those that match the search string. For example try typing "Mela"
-into the search box on the [BRAF](/target/ENSG00000157764/associations) table view to restrict the diseases
-to types of melanoma.
+In this view, we list all diseases associated with target, ordered by the association score, which is colour coded. The darker the blue, the stronger the association. When there is no to support the association, the cells in this table are coloured in white. Evidence from highly specific terms of the disease ontology is aggregated to broader, parent terms. So, if you search for BRAF, you will see evidence for disease associations for higher terms such as neoplasm, or cancer.
 
-#### Tree View
+You can order the associations by their scores for individual data types (e.g. Genetic associations, Somatic mutations). Use the search box to restrict the diseases displayed in the Table view. In our BRAF example above, if you type "lung", you will restrict the table to show diseases with the word 'lung' in their names.
 
-The ‘Tree’ view allows visualisation of evidence across the therapeutic areas in a tree representing the relationships of diseases.
-Therapeutic areas have a square symbol, while the other disease nodes are circles. The depth of the blue fill of the node indicates the
-association score at that node. Top-level disease categories are shown at a fixed position. Clicking on a disease opens a pop-up menu
-that provides links to various other pages, but also allows branches of the tree to be collapsed down to simplify the visualisation.
-Clicking on a collapsed disease will allow the branches to be opened again.
+##### Tree View
 
-### <a name="disease_assoc"></a>Disease Association page
+In the Tree view, you can visualise the evidence across the therapeutic areas in a tree that represents the relationships of diseases. Therapeutic areas have a square symbol (e.g. Genetic disorders), while the diseases (e.g. ovarian carcinoma) are represented as circles. The squares and circles are colour coded in blue, and the darker the blue, the stronger the association.
 
-This page provides a table view of all potential targets associated to a disease ordered by the association score. The depth of blue colour
-for the cells in the association score and for the individual data types again indicates the strength of the association. Targets can be filtered
-by data type and also by involvement in Reactome reaction pathways as described [below](#filters). The associations can be ordered
-by the association scores for individual data types by clicking the arrow in the table header. To order by several data types, shift-click
-the table headers.
 
-There is also a search box available and typing into the box will restrict the targets displayed to those that match the search string.
-For example try typing "IL" into the search box on the [Asthma](/disease/EFO_0000270/associations) table
-view to restrict the targets largely to Interleukins.
 
-### <a name="evidence"></a>Target-Disease Evidence page
 
-After viewing an association in either the Target Association page or Disease Association page, details of the underlying evidence
-can be accessed by clicking on the target/disease or the evidence cells of the table view, or by selecting the evidence flower, or
-'View evidence details' in the bubble or tree views. This displays the Target-Disease Evidence page.  At the top of this page is a panel
-indicating the association that is being examined, and a flower that shows the score for each data type as the petals of a flower.  The
-extent of the blue fill of the flower petal indicates the strength of the association for that data type. Details of the data types can be
-found [here](/data_sources).
 
-The sections below contain the details of the evidence available for this association in each data type. If evidence is available
-for a particularly datatype the section header will contain bold black text and clicking on the header will open our a table that describes the
-available data and the source. In some cases (e.g. Genetic associations) there will also be a tab available that displays a graphical
-view of the data (e.g. through a genome browser). If there is no evidence in a datatype the header will be greyed out and clicking on
-the header will open out a section indicating there is "No data available".
+#### Targets associated with a disease
 
-In each of the evidence tables, the columns may be sorted by the data, by clicking on the arrows in the table header. The tables can also be
-searched for matches to text by typing in the 'Search:' box. Details of the content of the tables follow:
+When you search for a disease, you will get to a page that shows an overview of all potential targets associated with the disease. This data is provided as a table, with cells ordered by the association score. The colour of the cells represents the strength of the association, ranging from white (no association) to dark blue (strong association). You can filter the targets by the data types supporting the association (e.g. Genetic associations, Somatic mutations), by pathway types containing the target (e.g. Signal Transduction, Metabolism) and by the class of the target associated with the disease (e.g. Surface antigen, Secreted protein).
 
-#### Genetic associations
-This section splits into common disease evidence from Genome Wide Association Studies ([GWAS catalog](/data_sources#gwas)),
-and rare disease evidence from Mendelian disease ([UniProt](/data_sources#uniprot) and [European Variation Archive](/data_sources#eva)).
+You can also restrict the target displayed in the table.
 
-For GWAS data we provide the identity of the SNP that was reported as the strongest association with the reported p value and the evidence that
-links the SNP to the target.
 
-For rare disease, we report the mutation if it is available and the curated cosequence of the mutation.
 
-#### Somatic mutations
-Somatic mutation evidence is provided primarily for cancers, from the [Cancer Gene Census](/data_sources#census). This data is a summary of multiple
-and sometimes many somatic mutations that support the association of a target to disease, and we provide the details of the mutation types
-observed that contribute to the overall summary annotation.
 
-In addition somatic mutation data can also come from the [European Variation Archive](/data_sources#eva_somatic)
 
-#### Drugs
-This section lists FDA approved and marketed drugs that associate a specific target to a specific disease. The drug to target association
-and drug to disease associations are curated by [ChEMBL](/data_sources#chembl) from multiple evidence sources as listed.
+#### The data sources for target-disease associations
 
-#### Affected pathways
-Evidence in this section reflects specific curation in [Reactome](/data_sources#reactome) of a molecular mechanism that affects a pathway leading to disease.
+We provide details of the evidence (e.g. UniProt) used for all the associations we have identified. Check our [Data Sources](/data_sources) to find out which evidence we have used in our computational analyses.
 
-#### RNA expression
+If you start your search with a disease, you can go to the evidence page by clicking on the cells in the table. If you would rather search for a gene, you get to the evidence page by clicking on the bubbles (Bubble view), the cells in the table (Table view) or the nodes in the tree (Tree view).
 
-The RNA expression data table shows gene changes for which the log2 fold change is greater than 1 or less than -1 and p-value is less than 0.05
-(after Benjamini & Hochberg (1995) FDR correction). The percentile rank column shows the relative rank of the gene expression fold change of
-that gene in comparison to all other genes for this experiment.
+The evidence page shows a flower, where each petal represents one data source, e.g. Genetics, Somatic mutations. If the petal representing Somatic mutation data for example is coloured in dark blue, this means the association based on the Somatic mutations evidence is strong. In this page, we also display the detailed information for each evidence divided in sections or panels.
 
-#### Text mining
-The Literature Mining data table shows the most relevant research articles based on the number of times an association between a gene and a
-disease is found in sentences across the article and highlights the terms in the relevant sentences.  Clicking on the number in the Matched
-sentences column will reveal a pop-up with all relevant sentences from the article.
 
-#### Animal models
-The table shows the mapping of the human and mouse phenotypes together withthe identity of the mouse knockout mutation that provides the
-evidence from the [Phenodigm](/data_sources#mouse) database.
 
-### <a name="target_profile"></a>Target Profile Page
 
-The Target Profile page summarises relevant information about a particular target outside of the context of a specific disease association.
-The Target profile can be accessed either by clicking the target name in the Target-Disease Evidence page, or the "View BRAF profile" link
-in the Target Association page.
 
-The sections of the page open out when they are clicked to reveal the information either as text or tables, or as a graphical display or both.
-Information available here includes:
+#### The target profile
 
-  * A summary of the target function from [UniProt](http://www.uniprot.org),
-  * Protein and gene synonyms.
-  * Protein information from [UniProt](http://www.uniprot.org) including a graphical protein feature viewer,
-  * Variants, isoforms and genomic context information section displaying common disease variants and rare disease mutations associated with diseases
-  relative to the alternative transcripts (isoforms) of the gene, supplied from [Ensembl](http://www.ensembl.org),
-  * Protein Baseline Expression displays data from the [Human Protein Atlas](http://www.proteinatlas.org/) expression analysis at either the protein or
-  RNA level. Expression levels are classified as low, medium and high as [described](http://www.proteinatlas.org/about/assays+annotation),
-  * RNA Baseline Expression displays RNA expression levels from large scale RNA-seq profiling of normal tissues. We include data from six different
-  studies to provide a wide coverage of different tissues. Data is provided by the EMBL-EBI [Expression Atlas](https://www.ebi.ac.uk/gxa/home),
-  * Gene Ontology terms,
-  * Protein Structure information from [PDBe](https://www.ebi.ac.uk/pdbe),
-  * Reaction pathway information from [Reactome](http://www.reactome.org),
-  * Information on FDA approved and marketed drugs that interact with the target from the [ChEMBLl](https://www.ebi.ac.uk/chembl/) database. In the
-  Target Profile page, all drugs for this target are displayed independent of disease,
-  * Target Family
-  * Bibliography information including the sources of literature data used to annotate the corresponding protein entry in
-  [UniProt](http://www.uniprot.org) and is provided through [EUROPE PubMed Central](https://europepmc.org/).
+When searching for a target, in addition to the list of diseases associated with it, you will also see at the top of the page the ‘View TARGET profile’ link e.g. <span class="cttv-link-quote">View BRAF profile</span>. Click on this to get information outside the context of a disease for your target of interest. This is the list of information (not disease related) for a target and the original resource the data is from:
 
-### <a name="disease_profile"></a>Disease Profile page
+*   Protein Information, [UniProt](http://www.uniprot.org/)
+*   Variants, isoforms and genomic context, [Ensembl annotation](http://www.ensembl.org/info/genome/genebuild/genome_annotation.html) of genes and [Ensembl Variation](http://www.ensembl.org/info/genome/variation/index.html)
+*   Protein baseline expression at the protein (or RNA) level, [Human Protein Atlas:](http://www.proteinatlas.org/)
+*   RNA baseline expression, [Expression Atlas](https://www.ebi.ac.uk/gxa/home)
+*   Gene Ontology, [Gene Ontology Consortium](http://geneontology.org/)
+*   Protein Structure, [Protein Data Bank Europe](https://www.ebi.ac.uk/pdbe/)
+*   Pathways, [Reactome](http://www.reactome.org/)
+*   Drugs, [ChEMBL](https://www.ebi.ac.uk/chembl/)
+*   Gene tree, [Ensembl Protein trees and orthologies](http://www.ensembl.org/info/genome/compara/homology_method.html)
+*   Bibliography, UniProt
 
-The Disease Profile page provides a summary of the disease and is accessed by clicking on the disease name in name in the Target-Disease Evidence page, or
-the "View disease profile" link in the Disease Association page, or the ‘P’ icon  from a pop-up menu.
 
-The Disease Profile page provides a description of the disease and its synonyms from the [EFO](/faq#efo) and its relationship
-to other diseases in the ontology. This page also displays the relationships of a disease to its immediate parents and children within the
-[EFO](/faq#efo) hierarchy. Clicking on ‘View target associations’ links to the Disease Association page for that disease.
 
-The Drug section on this page provides a list of all FDA-approved and marketed drugs to treat this disease.
 
-### <a name="scoring"></a>Association Score
-Details of the score calculation are given on the [scoring](/scoring) page.
 
-### <a name="filters"></a>Filters
+#### The disease profile
 
-A general concept in the platform is that a set of associations can be filtered according to properties of the associations.
-The following filters are currently available:
+When searching for a disease, in addition to the list of targets associated with it, you will also see on the top of the page the ‘View DISEASE profile’ link e.g. <span class="cttv-link-quote">View Asthma profile</span>. Click on this to get disease specific information:
 
-  * Data types: The diseases or targets displayed on the Association page are restricted to those having evidence from the selected data types.
-  * Therapeutic areas: This filter restricts diseases shown on the Target Association page by those in the therapeutic areas selected.
-  * Pathway types: This filter restricts the targets shown on the Disease Association page to those occurring in the selected [Reactome](http://www.reactome.org) pathway types and individual pathways.
+*   Synonyms: alternative names for the disease from [Experimental Factor Ontology](http://www.ebi.ac.uk/efo/) (EFO)
+*   Drugs: all FDA-approved and marketed drugs to treat the disease from [ChEMBL](https://www.ebi.ac.uk/chembl/)
+*   Classification: based on the relationships of the disease to parents and children within the EFO hierarchy
 
-When a Data types or Pathway types filter is applied the number of associations shown on the page is updated, and the number of associations
-available in the other filters on the page is also updated. Multiple Data types or Pathway types filters can be applied at the same time.
-Where multiple views are available as in the Target Association page, the filters apply across each of the views.
 
-The filters are displayed by default at the top level of the classification. Where additional sub-divisions are available, as for the
-Pathway types, clicking the arrow next to a particular Pathway type shows the individual pathways that this type consists of. Clicking
-on the arrow for a Therapeutic area filter lists the individual diseases within this area.
 
-### <a name="citation"></a>Citation
 
-If you find the CTTV Target Validation Platform useful, please consider citing us as below:
 
-The CTTV Target Validation Platform [www.targetvalidation.org](www.targetvalidation.org)
+#### The score of target-disease associations
 
-### <a name="support"></a>Support and Further Information
+We allow for the prioritisation of targets by [scoring target-disease associations](/scoring) based on our data sources. Our scoring system varies from 0 to 1, the latter represents the strongest association, and it’s calculated based on the confidence levels in the evidence.
 
-For support and feedback on the platform email <support@targetvalidation.org>
 
-If you want to be kept up to date on CTTV and platform developments, email <contact@targetvalidation.org>
 
-For further information about CTTV see [about.targetvalidation.org](about.targetvalidation.org)
+
+
+#### Filtering target-disease associations
+
+You can filter the associations based on four categories:
+
+*   Data types, e.g. Genetic Associations, Somatic mutations, Drugs
+*   Therapeutic area, e.g. Genetic disorder, Eye disease
+*   Pathway types, e.g. Signal Transduction, Cell Cycle
+*   Target class, e.g. Enzyme, Ion channel
+
+Each of those can be further filtered, e.g. you can select the GWAS catalog data under Genetic Associations.
+
+
+
+
+
+#### Accessing the Open Targets Platform with an API
+
+You can access all this data programmatically via our REST API services. We list the methods available, the supported formats and the endpoints in our [API documentation](/documentation/api).
+
+
+
+
+
+#### How to cite us
+
+If you use the Open Targets Platform in your work, please cite our latest paper ["Open Targets: a platform for therapeutic target identification and validation"](http://nar.oxfordjournals.org/content/early/2016/11/29/nar.gkw1055.full)
+
+
+
+
+
+#### Connect with us
+
+You can follow the team and keep up with the latest news on Open Targets through our social media channels [Twitter](https://twitter.com/targetvalidate/), [Facebook](https://www.facebook.com/OpenTargets/) and [LinkedIn](https://www.linkedin.com/company/centre-for-therapeutic-target-validation). If you’ve got questions or feedback, you can also [email us](mailto:support@targetvalidation.org).
+
 
 
