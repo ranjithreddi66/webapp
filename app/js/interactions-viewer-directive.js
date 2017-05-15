@@ -6,65 +6,65 @@ angular.module('cttvDirectives')
     var selectedNodesColors = ['#ffe6e6', '#e6ecff'];
     var maxNodes = 180;
 
-    function getSelectedNode (all, one) {
-        for (var i = 0; i < all.length; i++) {
-            if (all[i].label === one) {
-                return all[i];
-            }
-        }
-
-    }
-
-    function takeBestInteractors (interactors, n) {
-        // We have more than 200 interactors
-        // 'best' is based on the number of connected nodes
-
-        // First store the number of interactors to facilitate sorting
-        interactors.map (function (d) {
-            d.nInteractors = Object.keys(d.interactsWith).length;
-        });
-
-        var interactorsSelected = interactors.sort(function (a, b) {
-            return b.nInteractors - a.nInteractors;
-        }).slice(0, n);
-
-
-        // We need to eliminate the discarded nodes also from the interaction objects inside the nodes
-        // interactors is now sorted, so we just have to take the slice [n,interactors.length]
-        var interactorsDiscarded = interactors.slice(n, interactors.length);
-        var discardedIndex = {};
-        for (var i=0; i<interactorsDiscarded.length; i++) {
-            discardedIndex[interactorsDiscarded[i].label] = true;
-        }
-        for (var j=0; j<interactorsSelected.length; j++) {
-            var interactor = interactorsSelected[j];
-            for (var interacted in interactor.interactsWith) {
-                if (interactor.interactsWith.hasOwnProperty(interacted)) {
-                    if (discardedIndex[interacted]) {
-                        delete interactor.interactsWith[interacted];
-                    }
-                }
-            }
-        }
-
-
-        return interactorsSelected;
-    }
+    // function getSelectedNode (all, one) {
+    //     for (var i = 0; i < all.length; i++) {
+    //         if (all[i].label === one) {
+    //             return all[i];
+    //         }
+    //     }
+    //
+    // }
+    //
+    // function takeBestInteractors (interactors, n) {
+    //     // We have more than 200 interactors
+    //     // 'best' is based on the number of connected nodes
+    //
+    //     // First store the number of interactors to facilitate sorting
+    //     interactors.map (function (d) {
+    //         d.nInteractors = Object.keys(d.interactsWith).length;
+    //     });
+    //
+    //     var interactorsSelected = interactors.sort(function (a, b) {
+    //         return b.nInteractors - a.nInteractors;
+    //     }).slice(0, n);
+    //
+    //
+    //     // We need to eliminate the discarded nodes also from the interaction objects inside the nodes
+    //     // interactors is now sorted, so we just have to take the slice [n,interactors.length]
+    //     var interactorsDiscarded = interactors.slice(n, interactors.length);
+    //     var discardedIndex = {};
+    //     for (var i=0; i<interactorsDiscarded.length; i++) {
+    //         discardedIndex[interactorsDiscarded[i].label] = true;
+    //     }
+    //     for (var j=0; j<interactorsSelected.length; j++) {
+    //         var interactor = interactorsSelected[j];
+    //         for (var interacted in interactor.interactsWith) {
+    //             if (interactor.interactsWith.hasOwnProperty(interacted)) {
+    //                 if (discardedIndex[interacted]) {
+    //                     delete interactor.interactsWith[interacted];
+    //                 }
+    //             }
+    //         }
+    //     }
+    //
+    //
+    //     return interactorsSelected;
+    // }
 
     return {
         restrict: 'E',
         // templateUrl: 'partials/multiple-targets-interactions-summary.html',
-        template: '<div>Hello world -- no watch</div>',
+        template: '<div>Hello world -- no link</div>',
         scope: {
             interactors: '=',
             categories: '=',
             selected: '='
         },
         link: function (scope, elem, attrs) {
-            scope.showSpinner = true;
-
-            scope.$watchGroup(['interactors', 'categories'], function () {
-                console.log('watch fired...');
+            // scope.showSpinner = true;
+            //
+            // scope.$watchGroup(['interactors', 'categories'], function () {
+            //     console.log('watch fired...');
                 // if (!scope.interactors) {
                 //     return;
                 // }
@@ -254,7 +254,7 @@ angular.module('cttvDirectives')
                 // //     scope.colors.push({color: newColorScale(j), label: j});
                 // // }
 
-            });
+        //     });
         }
     };
 }]);
