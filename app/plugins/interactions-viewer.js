@@ -104,7 +104,7 @@ angular.module('plugins')
 
                                 for (var i = 0; i < odbData.length; i++) {
                                     var link = odbData[i];
-                                    console.log('one link retrieved...');
+                                    console.log('one link retrieved...' + i + ' of ' + odbData.length);
                                     var sourceObj = mapNames[link.source];
                                     var targetObj = mapNames[link.target];
 
@@ -149,6 +149,7 @@ angular.module('plugins')
                                         //     source: 'IntAct'
                                         // });
                                         for (var f = 0; f < provenance.length; f++) {
+                                            console.log('setting prov');
                                             var prov = provenance[f];
                                             console.log('starting provenance analysis... ' + prov);
 
