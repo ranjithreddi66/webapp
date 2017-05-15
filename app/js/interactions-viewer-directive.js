@@ -1,6 +1,6 @@
 angular.module('cttvDirectives')
 
-.directive('interactorsStarPlot2', ['$log', '$timeout', 'omnipathdbCategories', 'cttvUtils', function ($log, $timeout, omnipathdbCategories, cttvUtils) {
+.directive('interactorsStarPlot2', ['$log', '$timeout', 'cttvUtils', function ($log, $timeout, cttvUtils) {
     return {
         restrict: 'E',
         // templateUrl: 'partials/multiple-targets-interactions-summary.html',
