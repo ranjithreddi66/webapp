@@ -1,5 +1,17 @@
 angular.module('cttvDirectives')
 
+.directive('interactorsStarPlot2', ['$log', '$timeout', 'omnipathdbCategories', 'cttvUtils', function ($log, $timeout, omnipathdbCategories, cttvUtils) {
+    return {
+        restrict: 'E',
+        // templateUrl: 'partials/multiple-targets-interactions-summary.html',
+        template: '<div>Hello world -- star plot 2</div>',
+        scope: {
+        },
+        link: function (scope, elem, attrs) {
+        }
+    }
+}])
+
 .directive('interactorsStarPlot', ['$log', '$timeout', 'omnipathdbCategories', 'cttvUtils', function ($log, $timeout, omnipathdbCategories, cttvUtils) {
     'use strict';
 
