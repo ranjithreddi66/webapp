@@ -240,7 +240,7 @@ angular.module('cttvDirectives')
                     scope.showSpinner = false;
                     console.log('here we should run iv...');
                     console.log('iv still not called with the container');
-                    // iv(document.getElementById("interactionsViewerMultipleTargets"));
+                    iv(document.getElementById("interactionsViewerMultipleTargets"));
                 }, 0);
 
                 // scope.colors = [];
