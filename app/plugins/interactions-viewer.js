@@ -148,12 +148,15 @@ angular.module('plugins')
                                         //     label: "PPI",
                                         //     source: 'IntAct'
                                         // });
+
+                                        var sourceCat = 'sourceCat';
+                                        sourceCategories[sourceCat] = 0;
+
                                         for (var f = 0; f < provenance.length; f++) {
                                             console.log('setting prov');
                                             var prov = provenance[f];
                                             console.log('starting provenance analysis... ' + prov);
 
-                                            var sourceCat = 'sourceCat';
 
                                             // var sourceCat = omnipathdbSources[prov];
                                             // console.log('sourceCat: ' + sourceCat);
@@ -169,24 +172,24 @@ angular.module('plugins')
                                             //     continue;
                                             // }
 
-                                            if (!sourceCategories[sourceCat]) {
-                                                console.log('no sourceCategories[sourceCat]');
-                                                sourceCategories[sourceCat] = 0;
-                                            }
+                                            // if (!sourceCategories[sourceCat]) {
+                                            //     console.log('no sourceCategories[sourceCat]');
+                                            //     sourceCategories[sourceCat] = 0;
+                                            // }
                                             // sources[prov]++;
                                             sourceCategories[sourceCat]++;
-                                            interactors[source].interactsWith[target].provenance.push({
-                                                id: prov,
-                                                label: prov,
-                                                source: prov,
-                                                category: sourceCat
-                                            });
-                                            interactors[target].interactsWith[source].provenance.push({
-                                                id: prov,
-                                                label: prov,
-                                                source: prov,
-                                                category: sourceCat
-                                            });
+                                            // interactors[source].interactsWith[target].provenance.push({
+                                            //     id: prov,
+                                            //     label: prov,
+                                            //     source: prov,
+                                            //     category: sourceCat
+                                            // });
+                                            // interactors[target].interactsWith[source].provenance.push({
+                                            //     id: prov,
+                                            //     label: prov,
+                                            //     source: prov,
+                                            //     category: sourceCat
+                                            // });
                                             console.log('provenance loop ok');
                                         }
                                         // interactors[source].interactsWith[target].provenance = provenance;
