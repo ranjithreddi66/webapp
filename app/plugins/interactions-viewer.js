@@ -153,19 +153,21 @@ angular.module('plugins')
                                             var prov = provenance[f];
                                             console.log('starting provenance analysis... ' + prov);
 
-                                            var sourceCat = omnipathdbSources[prov];
-                                            console.log('sourceCat: ' + sourceCat);
-                                            if (!sourceCat) {
-                                                console.log('no sourceCat -- ' + missingSources[prov]);
-                                                if (!missingSources[prov]) {
-                                                    console.log('no missingSources[prov]');
-                                                    missingSources[prov] = 0;
-                                                }
-                                                console.log('adding missingSources[prov]++');
-                                                missingSources[prov]++;
-                                                console.log('calling continue');
-                                                continue;
-                                            }
+                                            var sourceCat = 'sourceCat';
+
+                                            // var sourceCat = omnipathdbSources[prov];
+                                            // console.log('sourceCat: ' + sourceCat);
+                                            // if (!sourceCat) {
+                                            //     console.log('no sourceCat -- ' + missingSources[prov]);
+                                            //     if (!missingSources[prov]) {
+                                            //         console.log('no missingSources[prov]');
+                                            //         missingSources[prov] = 0;
+                                            //     }
+                                            //     console.log('adding missingSources[prov]++');
+                                            //     missingSources[prov]++;
+                                            //     console.log('calling continue');
+                                            //     continue;
+                                            // }
 
                                             if (!sourceCategories[sourceCat]) {
                                                 console.log('no sourceCategories[sourceCat]');
