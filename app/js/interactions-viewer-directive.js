@@ -184,6 +184,7 @@ angular.module('cttvDirectives')
                         if (a.label > b.label) return 1;
                         return 0;
                     }))
+                  
                     .selectedNodesColors(selectedNodesColors)
                     .size(600)
                     .colorScale(newColorScale)
