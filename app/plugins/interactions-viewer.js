@@ -1,31 +1,31 @@
 angular.module('plugins')
     .directive('interactionsViewer', ['$log', '$timeout', '$http', '$q', 'cttvAPIservice', 'omnipathdbSources', function ($log, $timeout, $http, $q, cttvAPIservice, omnipathdbSources) {
 
-        function getNames(bestHits) {
-            var mapNames = {};
-            for (var i = 0; i < bestHits.length; i++) {
-                var bestHit = bestHits[i];
-
-                // TODO: There are cases where the bestHitSearch doesn't give anything back. For now, we filter them out
-                if (bestHit.data) {
-                    mapNames[bestHit.q] = {
-                        approved_symbol: bestHit.data.approved_symbol,
-                        association_counts: bestHit.data.association_counts,
-                        uniprot_id: bestHit.q,
-                        ensembl_id: bestHit.data.ensembl_gene_id
-                    };
-                }
-            }
-            return mapNames;
-        }
+        // function getNames(bestHits) {
+        //     var mapNames = {};
+        //     for (var i = 0; i < bestHits.length; i++) {
+        //         var bestHit = bestHits[i];
+        //
+        //         // TODO: There are cases where the bestHitSearch doesn't give anything back. For now, we filter them out
+        //         if (bestHit.data) {
+        //             mapNames[bestHit.q] = {
+        //                 approved_symbol: bestHit.data.approved_symbol,
+        //                 association_counts: bestHit.data.association_counts,
+        //                 uniprot_id: bestHit.q,
+        //                 ensembl_id: bestHit.data.ensembl_gene_id
+        //             };
+        //         }
+        //     }
+        //     return mapNames;
+        // }
 
         return {
             restrict: 'E',
-            template: '<!-- hint -->' +
-            '<div>' +
-            '    <p class="cttv-section-intro">Summary of interactions for {{target.approved_symbol}} based on <a target=_blank href="http://omnipathdb.org/">OmniPath DB</a> data. When 2 targets are selected details on the interaction are shown.</p>' +
-            '</div>' +
-            '<interactors-star-plot interactors="interactors" categories="categories" selected="target.approved_symbol"></interactors-star-plot>',
+            template: '<!-- hint -->',
+            // '<div>' +
+            // '    <p class="cttv-section-intro">Summary of interactions for {{target.approved_symbol}} based on <a target=_blank href="http://omnipathdb.org/">OmniPath DB</a> data. When 2 targets are selected details on the interaction are shown.</p>' +
+            // '</div>' +
+            // '<interactors-star-plot interactors="interactors" categories="categories" selected="target.approved_symbol"></interactors-star-plot>',
             scope: {
                 target: '=',
                 width: '='
