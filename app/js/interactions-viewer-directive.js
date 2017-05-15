@@ -237,6 +237,7 @@ angular.module('cttvDirectives')
                     });
                 $timeout(function () {
                     scope.showSpinner = false;
+                    console.log('here we should run iv...');
                     // iv(document.getElementById("interactionsViewerMultipleTargets"));
                 }, 0);
 
