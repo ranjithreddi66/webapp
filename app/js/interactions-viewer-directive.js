@@ -62,14 +62,10 @@ angular.module('cttvDirectives')
         link: function (scope, elem, attrs) {
             scope.showSpinner = true;
 
-            console.log('in interactions viewer directive...');
-
             scope.$watchGroup(['interactors', 'categories'], function () {
                 if (!scope.interactors) {
                     return;
                 }
-
-                console.log('new interactors and categories ok...');
 
                 var interactors = scope.interactors;
 
@@ -94,7 +90,6 @@ angular.module('cttvDirectives')
                     }
                 }
 
-                console.log('dataRange ok');
 
                 scope.nInteractors = interactorsArr.length;
 
@@ -120,8 +115,6 @@ angular.module('cttvDirectives')
                         .call(this, obj);
                 }
 
-                console.log('function mouseoverTooltip ok...');
-
                 // Keep track of the types filtering
                 var currentTypesSelection = {};
                 scope.filterInteractionType = function (category) {
@@ -132,7 +125,6 @@ angular.module('cttvDirectives')
                     }
 
                     var leftOutCats = {};
-                    $log.log(currentTypesSelection);
                     if (Object.keys(currentTypesSelection).length) {
                         for (var c in scope.categories) {
                             if (scope.categories.hasOwnProperty(c)) {
@@ -147,8 +139,6 @@ angular.module('cttvDirectives')
                     }
                     filterCategories(Object.keys(leftOutCats));
                 };
-
-                console.log('scope.filterInteractionType ok...');
 
                 function filterCategories (cats) {
                     scope.filterOut = {};
@@ -169,8 +159,6 @@ angular.module('cttvDirectives')
 
                 }
 
-                console.log('filerCategories function ok...');
-
                 scope.selectedNodes = [];
                 scope.unselectNode = function (node) {
                     iv.click(node, false); // If the click should fire a "select"/"unselect" event
@@ -181,16 +169,12 @@ angular.module('cttvDirectives')
                     }
                 };
 
-                console.log('scope.unselectNode function ok...');
-
                 // Color scale for the nodes (using the BLUE_0_1 range)
                 var range = cttvUtils.colorScales.BLUE_0_1.range(); //blue orig
                 var newColorScale = d3.scale.linear()
                     .domain([0, 1])
                     .range(range); // blue orig
 
-
-              console.log('newColorScale ok...');
 
                 // At this point we hide the spinner and show the star plot
                 var iv = interactionsViewer()
@@ -229,7 +213,6 @@ angular.module('cttvDirectives')
                         //     }
                         // }
                         scope.selectedNodes.push(selectedNode);
-                        $log.log("apply from select");
                         scope.$apply();
                     })
                     .on("unselect", function (unselectedNode) {
@@ -241,7 +224,6 @@ angular.module('cttvDirectives')
                         // if (ivTooltip) {
                         //     ivTooltip.close();
                         // }
-                        $log.log("apply from unselect");
                         scope.$apply();
                     })
                     .on("interaction", function (interactors) {
