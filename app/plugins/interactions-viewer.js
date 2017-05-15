@@ -102,99 +102,94 @@ angular.module('plugins')
 
                                 console.log('before looping on the data...');
 
-                                for (var i = 0; i < odbData.length; i++) {
-                                    var link = odbData[i];
-                                    console.log('one link retrieved...' + i + ' of ' + odbData.length);
-                                    var sourceObj = mapNames[link.source];
-                                    var targetObj = mapNames[link.target];
-
-                                    var source, target;
-                                    if (sourceObj) {
-                                        source = sourceObj.approved_symbol;
-                                    }
-                                    if (targetObj) {
-                                        target = targetObj.approved_symbol;
-                                    }
-
-                                    var provenance = link.sources;
-
-                                    if ((source && target) && (source !== target)) {
-                                        if (!interactors[source]) {
-                                            interactors[source] = {
-                                                label: source,
-                                                interactsWith: {}
-                                            }
-                                        }
-                                        if (!interactors[target]) {
-                                            interactors[target] = {
-                                                label: target,
-                                                interactsWith: {}
-                                            }
-                                        }
-                                        if (!interactors[source].interactsWith[target]) {
-                                            interactors[source].interactsWith[target] = {
-                                                label: target,
-                                                provenance: []
-                                            }
-                                        }
-                                        if (!interactors[target].interactsWith[source]) {
-                                            interactors[target].interactsWith[source] = {
-                                                label: source,
-                                                provenance: []
-                                            }
-                                        }
-                                        // interactors[source].interactsWith[target].provenance.push({
-                                        //     id: "IntAct",
-                                        //     label: "PPI",
-                                        //     source: 'IntAct'
-                                        // });
-
-                                        var sourceCat = 'sourceCat';
-                                        sourceCategories[sourceCat] = 0;
-
-                                        for (var f = 0; f < provenance.length; f++) {
-                                            console.log('setting prov');
-                                            var prov = provenance[f];
-                                            console.log('starting provenance analysis... ' + prov);
-
-
-                                            // var sourceCat = omnipathdbSources[prov];
-                                            // console.log('sourceCat: ' + sourceCat);
-                                            // if (!sourceCat) {
-                                            //     console.log('no sourceCat -- ' + missingSources[prov]);
-                                            //     if (!missingSources[prov]) {
-                                            //         console.log('no missingSources[prov]');
-                                            //         missingSources[prov] = 0;
-                                            //     }
-                                            //     console.log('adding missingSources[prov]++');
-                                            //     missingSources[prov]++;
-                                            //     console.log('calling continue');
-                                            //     continue;
-                                            // }
-
-                                            // if (!sourceCategories[sourceCat]) {
-                                            //     console.log('no sourceCategories[sourceCat]');
-                                            //     sourceCategories[sourceCat] = 0;
-                                            // }
-                                            // sources[prov]++;
-                                            sourceCategories[sourceCat]++;
-                                            // interactors[source].interactsWith[target].provenance.push({
-                                            //     id: prov,
-                                            //     label: prov,
-                                            //     source: prov,
-                                            //     category: sourceCat
-                                            // });
-                                            // interactors[target].interactsWith[source].provenance.push({
-                                            //     id: prov,
-                                            //     label: prov,
-                                            //     source: prov,
-                                            //     category: sourceCat
-                                            // });
-                                            console.log('provenance loop ok');
-                                        }
-                                        // interactors[source].interactsWith[target].provenance = provenance;
-                                    }
-                                }
+                                // for (var i = 0; i < odbData.length; i++) {
+                                //     var link = odbData[i];
+                                //     console.log('one link retrieved...' + i + ' of ' + odbData.length);
+                                //     var sourceObj = mapNames[link.source];
+                                //     var targetObj = mapNames[link.target];
+                                //
+                                //     var source, target;
+                                //     if (sourceObj) {
+                                //         source = sourceObj.approved_symbol;
+                                //     }
+                                //     if (targetObj) {
+                                //         target = targetObj.approved_symbol;
+                                //     }
+                                //
+                                //     var provenance = link.sources;
+                                //
+                                //     if ((source && target) && (source !== target)) {
+                                //         if (!interactors[source]) {
+                                //             interactors[source] = {
+                                //                 label: source,
+                                //                 interactsWith: {}
+                                //             }
+                                //         }
+                                //         if (!interactors[target]) {
+                                //             interactors[target] = {
+                                //                 label: target,
+                                //                 interactsWith: {}
+                                //             }
+                                //         }
+                                //         if (!interactors[source].interactsWith[target]) {
+                                //             interactors[source].interactsWith[target] = {
+                                //                 label: target,
+                                //                 provenance: []
+                                //             }
+                                //         }
+                                //         if (!interactors[target].interactsWith[source]) {
+                                //             interactors[target].interactsWith[source] = {
+                                //                 label: source,
+                                //                 provenance: []
+                                //             }
+                                //         }
+                                //
+                                //         var sourceCat = 'sourceCat';
+                                //         sourceCategories[sourceCat] = 0;
+                                //
+                                //         for (var f = 0; f < provenance.length; f++) {
+                                //             console.log('setting prov');
+                                //             var prov = provenance[f];
+                                //             console.log('starting provenance analysis... ' + prov);
+                                //
+                                //
+                                //             // var sourceCat = omnipathdbSources[prov];
+                                //             // console.log('sourceCat: ' + sourceCat);
+                                //             // if (!sourceCat) {
+                                //             //     console.log('no sourceCat -- ' + missingSources[prov]);
+                                //             //     if (!missingSources[prov]) {
+                                //             //         console.log('no missingSources[prov]');
+                                //             //         missingSources[prov] = 0;
+                                //             //     }
+                                //             //     console.log('adding missingSources[prov]++');
+                                //             //     missingSources[prov]++;
+                                //             //     console.log('calling continue');
+                                //             //     continue;
+                                //             // }
+                                //
+                                //             // if (!sourceCategories[sourceCat]) {
+                                //             //     console.log('no sourceCategories[sourceCat]');
+                                //             //     sourceCategories[sourceCat] = 0;
+                                //             // }
+                                //             // sources[prov]++;
+                                //             sourceCategories[sourceCat]++;
+                                //             // interactors[source].interactsWith[target].provenance.push({
+                                //             //     id: prov,
+                                //             //     label: prov,
+                                //             //     source: prov,
+                                //             //     category: sourceCat
+                                //             // });
+                                //             // interactors[target].interactsWith[source].provenance.push({
+                                //             //     id: prov,
+                                //             //     label: prov,
+                                //             //     source: prov,
+                                //             //     category: sourceCat
+                                //             // });
+                                //             console.log('provenance loop ok');
+                                //         }
+                                //         // interactors[source].interactsWith[target].provenance = provenance;
+                                //     }
+                                // }
 
                                 console.log('finished looping over the data ok...');
 
