@@ -184,57 +184,57 @@ angular.module('cttvDirectives')
                         if (a.label > b.label) return 1;
                         return 0;
                     }));
-                    // .selectedNodesColors(selectedNodesColors)
-                    // .size(600)
-                    // .colorScale(newColorScale)
-                    // .labelSize(90)
-                    // .on("mouseout", function () {
-                    //     hover_tooltip.close();
-                    // })
-                    // .on("mouseover", mouseoverTooltip)
-                    // .on("select", function (selectedNode) {
-                    //     scope.selectedNodes.push(selectedNode);
-                    //     scope.$apply();
-                    // })
-                    // .on("unselect", function (unselectedNode) {
-                    //     for (var i = 0; i < scope.selectedNodes.length; i++) {
-                    //         if (scope.selectedNodes[i].label === unselectedNode.label) {
-                    //             scope.selectedNodes.splice(i, 1);
-                    //         }
-                    //     }
-                    //     scope.$apply();
-                    // })
-                    // .on("interaction", function (interactors) {
-                    //     var obj = {};
-                    //     obj.header = interactors.interactor1 + " - " + interactors.interactor2 + " interaction";
-                    //     obj.rows = [];
-                    //
-                    //     // Differenciate between sources
-                    //     var pathways = [];
-                    //     var ppis = [];
-                    //     var enzSubs = [];
-                    //     interactors.provenance.forEach(function (p) {
-                    //         if (p.category === "Pathways") {
-                    //             pathways.push(p);
-                    //         } else if (p.category === "PPI") {
-                    //             ppis.push(p);
-                    //         } else if (p.category === 'Enzyme-substrate') {
-                    //             enzSubs.push(p);
-                    //         }
-                    //     });
-                    //
-                    //     scope.pathways = pathways;
-                    //     scope.ppis = ppis;
-                    //     scope.enzSubs = enzSubs;
-                    //
-                    // })
-                    // .on ("loaded", function () {
-                    //     if (scope.selected) {
-                    //         var selectedNode = getSelectedNode(interactorsArr, scope.selected);
-                    //         iv.click(selectedNode);
-                    //     }
-                    //
-                    // });
+                    .selectedNodesColors(selectedNodesColors)
+                    .size(600)
+                    .colorScale(newColorScale)
+                    .labelSize(90)
+                    .on("mouseout", function () {
+                        hover_tooltip.close();
+                    })
+                    .on("mouseover", mouseoverTooltip)
+                    .on("select", function (selectedNode) {
+                        scope.selectedNodes.push(selectedNode);
+                        scope.$apply();
+                    })
+                    .on("unselect", function (unselectedNode) {
+                        for (var i = 0; i < scope.selectedNodes.length; i++) {
+                            if (scope.selectedNodes[i].label === unselectedNode.label) {
+                                scope.selectedNodes.splice(i, 1);
+                            }
+                        }
+                        scope.$apply();
+                    })
+                    .on("interaction", function (interactors) {
+                        var obj = {};
+                        obj.header = interactors.interactor1 + " - " + interactors.interactor2 + " interaction";
+                        obj.rows = [];
+
+                        // Differenciate between sources
+                        var pathways = [];
+                        var ppis = [];
+                        var enzSubs = [];
+                        interactors.provenance.forEach(function (p) {
+                            if (p.category === "Pathways") {
+                                pathways.push(p);
+                            } else if (p.category === "PPI") {
+                                ppis.push(p);
+                            } else if (p.category === 'Enzyme-substrate') {
+                                enzSubs.push(p);
+                            }
+                        });
+
+                        scope.pathways = pathways;
+                        scope.ppis = ppis;
+                        scope.enzSubs = enzSubs;
+
+                    })
+                    .on ("loaded", function () {
+                        if (scope.selected) {
+                            var selectedNode = getSelectedNode(interactorsArr, scope.selected);
+                            iv.click(selectedNode);
+                        }
+
+                    });
                 $timeout(function () {
                     scope.showSpinner = false;
                     // iv(document.getElementById("interactionsViewerMultipleTargets"));
