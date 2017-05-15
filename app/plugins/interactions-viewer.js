@@ -83,8 +83,14 @@ angular.module('plugins')
                         $q.all(promises)
                             .then(function (resps) {
 
+                                console.log('resps ok...');
+                                console.log(resps);
+
                                 // Get the mappings between uniprot ids and gene symbols
                                 var mapNames = getNames(resps[1].body.data);
+
+                                console.log('mapNames ok...');
+                                console.log(mapNames);
 
 
                                 // parse the omnipath data
@@ -94,8 +100,11 @@ angular.module('plugins')
                                 var sourceCategories = {};
                                 var missingSources = {};
 
+                                console.log('before looping on the data...');
+
                                 for (var i = 0; i < odbData.length; i++) {
                                     var link = odbData[i];
+                                    console.log('one link retrieved...');
                                     var sourceObj = mapNames[link.source];
                                     var targetObj = mapNames[link.target];
 
@@ -141,6 +150,8 @@ angular.module('plugins')
                                         // });
                                         for (var f = 0; f < provenance.length; f++) {
                                             var prov = provenance[f];
+                                          console.log('provenance ok...');
+
                                             var sourceCat = omnipathdbSources[prov];
                                             if (!sourceCat) {
                                                 if (!missingSources[prov]) {
@@ -173,14 +184,20 @@ angular.module('plugins')
                                     }
                                 }
 
+                                console.log('finished looping over the data ok...');
+
                                 // Reporting in the console the omnipath sources that haven't been assigned a category yet. See omnipathdbSources and omnipathdbCategories
                                 if (Object.keys(missingSources).length) {
                                     $log.warn('These omnipath sources does not have a category described and have been skipped');
                                     $log.warn(missingSources);
                                 }
 
+                                console.log('reported all missing sources ok...');
+
                                 scope.interactors = interactors;
                                 scope.categories = sourceCategories;
+
+                                console.log('the end ok...');
                             });
                     });
             }
