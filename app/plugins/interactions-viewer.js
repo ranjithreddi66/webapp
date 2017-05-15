@@ -21,11 +21,11 @@ angular.module('plugins')
 
         return {
             restrict: 'E',
-            template: '<!-- hint --><div>Interaction viewer here</div>',
+            template: '<!-- hint --><div>Interaction viewer here</div>' +
             // '<div>' +
             // '    <p class="cttv-section-intro">Summary of interactions for {{target.approved_symbol}} based on <a target=_blank href="http://omnipathdb.org/">OmniPath DB</a> data. When 2 targets are selected details on the interaction are shown.</p>' +
             // '</div>' +
-            // '<interactors-star-plot interactors="interactors" categories="categories" selected="target.approved_symbol"></interactors-star-plot>',
+            '<interactors-star-plot interactors="interactors" categories="categories" selected="target.approved_symbol"></interactors-star-plot>',
             scope: {
                 target: '=',
                 width: '='
