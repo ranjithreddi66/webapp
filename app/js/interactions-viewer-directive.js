@@ -184,7 +184,7 @@ angular.module('cttvDirectives')
                         if (a.label > b.label) return 1;
                         return 0;
                     }))
-                  
+
                     .selectedNodesColors(selectedNodesColors)
                     .size(600)
                     .colorScale(newColorScale)
@@ -239,7 +239,7 @@ angular.module('cttvDirectives')
                 $timeout(function () {
                     scope.showSpinner = false;
                     console.log('here we should run iv...');
-
+                    console.log('iv still not called with the container');
                     // iv(document.getElementById("interactionsViewerMultipleTargets"));
                 }, 0);
 
