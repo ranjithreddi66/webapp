@@ -150,29 +150,36 @@ angular.module('plugins')
                                         // });
                                         for (var f = 0; f < provenance.length; f++) {
                                             var prov = provenance[f];
-                                          console.log('provenance ok...');
+                                            console.log('provenance ok...');
 
                                             var sourceCat = omnipathdbSources[prov];
+                                            console.log('sourceCat: ' + sourceCat);
                                             if (!sourceCat) {
+                                                console.log('no sourceCat');
                                                 if (!missingSources[prov]) {
+                                                    console.log('no missingSources[prov]');
                                                     missingSources[prov] = 0;
                                                 }
+                                                console.log('adding missingSources[prov]++');
                                                 missingSources[prov]++;
-                                                // $log.warn('omnipath source ' + prov + ' does not have a category -- skipping source');
                                                 continue;
                                             }
 
                                             if (!sourceCategories[sourceCat]) {
+                                                console.log('no sourceCategories[sourceCat]');
                                                 sourceCategories[sourceCat] = 0;
                                             }
                                             // sources[prov]++;
+                                            console.log('sourceCategories[sourceCat]++');
                                             sourceCategories[sourceCat]++;
+                                            console.log('1st push...');
                                             interactors[source].interactsWith[target].provenance.push({
                                                 id: prov,
                                                 label: prov,
                                                 source: prov,
                                                 category: sourceCat
                                             });
+                                            console.log('2nd push...');
                                             interactors[target].interactsWith[source].provenance.push({
                                                 id: prov,
                                                 label: prov,
@@ -180,6 +187,7 @@ angular.module('plugins')
                                                 category: sourceCat
                                             });
                                         }
+                                        console.log('provenance loop ok');
                                         // interactors[source].interactsWith[target].provenance = provenance;
                                     }
                                 }
