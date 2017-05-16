@@ -37,7 +37,7 @@ angular.module('cttvServices')
         return omnipathdb;
     }])
     .factory('omnipathdbCategories', [function () {
-        var omnipathdb = {} = {
+        var omnipathdb = {
             'Pathways': {
                 'SignaLink3': true,
                 'Signor': true,
