@@ -30,7 +30,7 @@ angular.module('cttvDirectives', [])
 
                     //gB.rest().proxyUrl("/ensembl");
                     //gB.rest().proxyUrl("/api/latest/ensembl")
-                    gB.rest().prefix("/proxy/rest.ensembl.org").protocol("").domain("");
+                    gB.rest().prefix("https://proxy.targetvalidation.org/rest.ensembl.org").protocol("").domain("");
                     var theme = targetGenomeBrowser()
                         .efo(efo)
                         .cttvRestApi(cttvAPIservice.getSelf());
@@ -1104,7 +1104,7 @@ angular.module('cttvDirectives', [])
                         +'    </div>'
                         +'</div>',
             link: function(scope, element, attrs) {
-                $http.get('/proxy/blog.opentargets.org/rss/')
+                $http.get('https://proxy.targetvalidation.org/blog.opentargets.org/rss/')
                 //$http.get('rss.xml')    // JUST FOR TESTING and DEVELOPING LOCALLY WITHOUT THE PROXY
                     .then(function successCallback(response) {
 

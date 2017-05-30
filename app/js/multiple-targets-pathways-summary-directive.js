@@ -136,7 +136,7 @@ angular.module('cttvDirectives')
 
                 // Get enrichment analysis from reactome
                 // http://www.reactome.org/AnalysisService/identifiers/projection/\?pageSize\=1\&page\=1 POST
-                var preFlightUrl = '/proxy/www.reactome.org/AnalysisService/identifiers/projection?pageSize=1&page=1&resource=UNIPROT';
+                var preFlightUrl = 'https://proxy.targetvalidation.org/www.reactome.org/AnalysisService/identifiers/projection?pageSize=1&page=1&resource=UNIPROT';
                 var postData = Object.keys(uniqueTargets).join('\n');
                 $http.post(preFlightUrl, postData)
                     .then (function (resp) {
@@ -145,11 +145,11 @@ angular.module('cttvDirectives')
                     .then (function (data) {
                         var token = data.summary.token;
                         var nPathways = data.pathwaysFound;
-                        var url = '/proxy/www.reactome.org/AnalysisService/token/' + token + '?pageSize=' + nPathways + '&page=1&resource=UNIPROT';
+                        var url = 'https://proxy.targetvalidation.org/www.reactome.org/AnalysisService/token/' + token + '?pageSize=' + nPathways + '&page=1&resource=UNIPROT';
                         $http.get(url)
                             .then (function (resp) {
                                 var token = resp.data.summary.token;
-                                var url2 = '/proxy/www.reactome.org/AnalysisService/token/' + token + '/found/all';
+                                var url2 = 'https://proxy.targetvalidation.org/www.reactome.org/AnalysisService/token/' + token + '/found/all';
                                 var postData2 = resp.data.pathways.map(function (d) {
                                     return d.stId;
                                 }).join(",");

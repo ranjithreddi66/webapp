@@ -105,7 +105,7 @@ angular.module('plugins')
                     .context(20)
                     .width(w);
 
-                gB.rest().prefix("/proxy/rest.ensembl.org").protocol("").domain("");
+                gB.rest().prefix("https://proxy.targetvalidation.org/rest.ensembl.org").protocol("").domain("");
                 var theme = targetGenomeBrowser()
                     .efo(efo)
                     .cttvRestApi(cttvAPIservice.getSelf());

@@ -154,7 +154,7 @@
                     return resp;
                 },cttvAPIservice.defaultErrorHandler);
                 // .then (function (target) {
-                //     return $http.get("/proxy/www.ebi.ac.uk/pdbe/api/mappings/best_structures/" + target.body.uniprot_id);
+                //     return $http.get("https://proxy.targetvalidation.org/www.ebi.ac.uk/pdbe/api/mappings/best_structures/" + target.body.uniprot_id);
                 // });
 
              // get disease specific info with the efo() method
@@ -319,7 +319,7 @@
             if (bestStructures) {
                 $scope.search.info.bestStructure = parseBestStructure(bestStructures.data[$scope.search.info.gene.uniprot_id]);
             }
-            var url = "/proxy/www.ebi.ac.uk/proteins/api/variation/" + $scope.search.info.gene.uniprot_id;
+            var url = "https://proxy.targetvalidation.org/www.ebi.ac.uk/proteins/api/variation/" + $scope.search.info.gene.uniprot_id;
             return $http.get(url)
                 .then(function (varsResp) {
                     var snps = varsResp.data.features;

@@ -21,7 +21,7 @@ angular.module('cttvDirectives')
                 var h = 700;
 
                 // Ask for information of the pathway in reactome:
-                $http.get("/proxy/www.reactome.org/ContentService/data/query/" + scope.pathway + "/more")
+                $http.get("https://proxy.targetvalidation.org/www.reactome.org/ContentService/data/query/" + scope.pathway + "/more")
                     .then (function (resp) {
                         scope.displayName = resp.data.displayName;
                         scope.description = resp.data.summation[0].text;
@@ -30,7 +30,7 @@ angular.module('cttvDirectives')
                 function loadPathway () {
                     var pId = scope.pathway;
                     var pathwayDiagram = Reactome.Diagram.create ({
-                        "proxyPrefix" : "/proxy/www.reactome.org",
+                        "proxyPrefix" : "https://proxy.targetvalidation.org/www.reactome.org",
                         "placeHolder": "pathwayDiagramContainer",
                         "width": w,
                         "height": h

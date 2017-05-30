@@ -32,7 +32,7 @@ angular.module('plugins')
             },
             link: function (scope, elem, attrs) {
                 var uniprotId = scope.target.uniprot_id;
-                var url = "/proxy/www.omnipathdb.org/interactions/" + uniprotId + '?format=json';
+                var url = "https://proxy.targetvalidation.org/www.omnipathdb.org/interactions/" + uniprotId + '?format=json';
                 $http.get(url)
                     .then(function (resp) {
                         var interactors = {};
@@ -61,7 +61,7 @@ angular.module('plugins')
                         var promises = [];
 
                         // Promise -- second pass in omnipathdb...
-                        var url = "/proxy/www.omnipathdb.org/interactions/" + uniprotIds.join(',') + '?format=json&fields=sources';
+                        var url = "https://proxy.targetvalidation.org/www.omnipathdb.org/interactions/" + uniprotIds.join(',') + '?format=json&fields=sources';
                         promises.push($http.get(url));
 
                         // Promise -- get the names from bestHitSearch

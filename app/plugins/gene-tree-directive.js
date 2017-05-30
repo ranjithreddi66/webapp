@@ -25,7 +25,7 @@ angular.module('plugins')
                 var gt = targetGeneTree()
                     .id(scope.target.id)
                     .width(width)
-                    .proxy("/proxy/rest.ensembl.org")
+                    .proxy("https://proxy.targetvalidation.org/rest.ensembl.org")
                     .on("notFound", function() {
                         scope.notFound = 1;
                     });

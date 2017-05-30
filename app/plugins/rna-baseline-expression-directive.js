@@ -18,7 +18,7 @@ angular.module('plugins')
                     
                     // Expression Atlas
                     expressionAtlasHeatmapHighcharts.render({
-                        atlasUrl: 'https://wwwdev.ebi.ac.uk/gxa/',
+                        atlasUrl: 'https://www.ebi.ac.uk/gxa/',
                         target: 'gxaWidget',
                         query: {
                             species: 'homo sapiens',
@@ -28,7 +28,7 @@ angular.module('plugins')
                     });
 
                     // GTEx
-                    var url = '/proxy/www.gtexportal.org/api/v6p/expression/' + target + '?boxplot=true';
+                    var url = 'https://proxy.targetvalidation.org/www.gtexportal.org/api/v6p/expression/' + target + '?boxplot=true';
                     $http.get(url)
                         .then(function (resp) {
                             var arr = obj2array(resp.data.generpkm);

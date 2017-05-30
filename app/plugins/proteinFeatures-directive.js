@@ -20,7 +20,7 @@ angular.module('plugins')
                 $timeout(function () {
                     var ProtVista = require('ProtVista');
                     new ProtVista({
-                        proxy: "/proxy/",
+                        proxy: "https://proxy.targetvalidation.org/",
                         el: "#upfv",
                         uniprotacc: scope.target.uniprot_accessions[0],
                         exclusions: ['seqInfo']

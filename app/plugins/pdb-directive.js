@@ -103,7 +103,7 @@ angular.module('plugins')
                 element[0].appendChild(newDiv);
 
 
-                $http.get("/proxy/www.ebi.ac.uk/pdbe/api/mappings/best_structures/" + uniprotId)
+                $http.get("https://proxy.targetvalidation.org/www.ebi.ac.uk/pdbe/api/mappings/best_structures/" + uniprotId)
                     .then (function (resp) {
                         var bestStructure = resp.data[uniprotId][0];
                         scope.pdbId = bestStructure.pdb_id;
@@ -126,9 +126,9 @@ angular.module('plugins')
                             }
 
                             scope.viewer = pv.Viewer(parent, options);
-                            $http.get('/proxy/files.rcsb.org/view/' + bestStructure.pdb_id + '.pdb')
+                            $http.get('https://proxy.targetvalidation.org/files.rcsb.org/view/' + bestStructure.pdb_id + '.pdb')
                             // $http.get('https://files.rcsb.org/view/' + bestStructure.pdb_id + ".pdb")
-                            // $http.get('/proxy/pdb.org/pdb/files/'+bestStructure.pdb_id+'.pdb')
+                            // $http.get('https://proxy.targetvalidation.org/pdb.org/pdb/files/'+bestStructure.pdb_id+'.pdb')
                                 .then (function (data) {
                                     // Extract the title:
                                     var lines = data.data.split("\n");

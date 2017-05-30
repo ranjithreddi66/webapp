@@ -43,7 +43,7 @@ angular.module('plugins')
                     for (var i=0; i<pathways.length; i++) {
                     // for (var pathway in pathways) {
                         var pathway = pathways[i].id;
-                        var p = $http.get("/proxy/www.reactome.org/ReactomeRESTfulAPI/RESTfulWS/queryById/DatabaseObject/" + pathway + "/stableIdentifier");
+                        var p = $http.get("https://proxy.targetvalidation.org/www.reactome.org/ReactomeRESTfulAPI/RESTfulWS/queryById/DatabaseObject/" + pathway + "/stableIdentifier");
                         promises.push(p);
                         // pathwayArr.push(pathways[pathway]["pathway name"]);
                         pathwayArr.push(pathways[i].value["pathway name"]);
@@ -76,7 +76,7 @@ angular.module('plugins')
                     var pId = pathway.id;
                     if (!pathwayDiagram) {
                         pathwayDiagram = Reactome.Diagram.create ({
-                            "proxyPrefix" : "/proxy/www.reactome.org",
+                            "proxyPrefix" : "https://proxy.targetvalidation.org/www.reactome.org",
                             "placeHolder": "pathwayDiagramContainer",
                             "width": w,
                             "height": h,
